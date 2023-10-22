@@ -15,7 +15,13 @@ type MenuSelected = {
 type MenuAction = {
   onSelectedMenu: (selectedMenu: SelectedMenu) => void;
 };
+const MenuSelectedContext = createContext<MenuSelected>({
+  selectedMenu: { id: "first" },
+});
 
+const MenuActionContext = createContext<MenuAction>({
+  onSelectedMenu: noop,
+});
 type PropsProvider = {
   children: ReactNode;
 };
@@ -89,10 +95,4 @@ export function ComponentApp() {
   );
 }
 
-const MenuSelectedContext = createContext<MenuSelected>({
-  selectedMenu: { id: "first" },
-});
 
-const MenuActionContext = createContext<MenuAction>({
-  onSelectedMenu: noop,
-});
